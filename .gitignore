@@ -1,0 +1,8 @@
+# .gitignore for Django and React
+*.pyc
+__pycache__/
+db.sqlite3
+media/
+static/
+node_modules/
+.env
