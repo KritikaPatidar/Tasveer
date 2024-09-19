@@ -86,6 +86,14 @@ DATABASES = {
     }
 }
 
+#AWS S3 config
+
+'''
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = '<your-aws-access-key>'
+AWS_SECRET_ACCESS_KEY = '<your-aws-secret-key>'
+AWS_STORAGE_BUCKET_NAME = '<your-s3-bucket-name>'
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -127,3 +135,20 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#REST Framework for API
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+#token's life
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  # Change the time as per your need
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+}
